@@ -1,147 +1,799 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>glebes</title>
-  <meta name="description" content="Welcome to my website. Built with SiteForge.">
-  <meta property="og:title" content="glebes">
-  <meta property="og:description" content="Welcome to my website.">
+  <title>Glebes Fastighets AB - Bygg, förvaltar och hyr ut fastigheter i Kalmar</title>
+  <meta name="description" content="Glebes Fastighets AB äger och förvaltar fastigheter från kulturhistoriska byggnader till nyproduktion i centrala Kalmarlägen. Sedan 1944.">
+  <meta property="og:title" content="Glebes Fastighets AB">
+  <meta property="og:description" content="Bygg, förvaltar och hyr ut fastigheter i Kalmar sedan 1944">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#2563eb', secondary: '#1e40af', accent: '#3b82f6' },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#3b82f6',
+            accent: '#60a5fa',
+            dark: '#0f172a'
+          },
           fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] }
         }
       }
     }
   </script>
-  <style type="text/tailwindcss">html { scroll-behavior: smooth; }</style>
+  <style type="text/tailwindcss">
+    html { scroll-behavior: smooth; }
+    @layer utilities {
+      .text-balance { text-wrap: balance; }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
 
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-    <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="text-xl font-bold text-primary">glebes</a>
-      <div class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
-        <a href="#about" class="text-gray-600 hover:text-gray-900 transition">About</a>
-        <a href="#contact" class="text-gray-600 hover:text-gray-900 transition">Contact</a>
-        <a href="#contact" class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-secondary transition">Get in Touch</a>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <span class="text-2xl font-bold text-primary">Glebes</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="#fastighet" class="px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg transition font-medium">Fastighet</a>
+          <a href="#bygg" class="px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg transition font-medium">Bygg</a>
+          <a href="#entreprenad" class="px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg transition font-medium">Entreprenad</a>
+          <a href="#aktuellt" class="px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg transition font-medium">Aktuellt</a>
+          <a href="#om-oss" class="px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg transition font-medium">Om oss</a>
+          <a href="#kontakt" class="ml-2 px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-blue-900 transition font-medium shadow-sm">Kontakt</a>
+        </div>
+
+        <button id="menu-toggle" class="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
       </div>
-      <button id="menu-toggle" class="md:hidden p-2 text-gray-600" aria-label="Toggle menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-      <div class="px-6 py-4 space-y-3">
-        <a href="#features" class="block text-gray-600 hover:text-gray-900 transition">Features</a>
-        <a href="#about" class="block text-gray-600 hover:text-gray-900 transition">About</a>
-        <a href="#contact" class="block text-gray-600 hover:text-gray-900 transition">Contact</a>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+      <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
+        <a href="#fastighet" class="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium">Fastighet</a>
+        <a href="#bygg" class="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium">Bygg</a>
+        <a href="#entreprenad" class="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium">Entreprenad</a>
+        <a href="#aktuellt" class="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium">Aktuellt</a>
+        <a href="#om-oss" class="block px-4 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg transition font-medium">Om oss</a>
+        <a href="#kontakt" class="block px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-blue-900 transition font-medium text-center">Kontakt</a>
       </div>
     </div>
   </header>
 
-  <section class="max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">Welcome to <span class="text-primary">glebes</span></h1>
-    <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">This is your new website. Use the AI editor to customize it however you like. Just describe what you want changed!</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contact" class="px-8 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-secondary transition shadow-lg shadow-primary/25">Get Started</a>
-      <a href="#features" class="px-8 py-3.5 border border-gray-200 text-gray-700 rounded-xl font-medium hover:border-gray-300 hover:bg-gray-50 transition">Learn More</a>
-    </div>
-  </section>
-
-  <section id="features" class="bg-gray-50 py-20 md:py-28">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Features</h2>
-        <p class="text-gray-500 max-w-xl mx-auto">Everything you need, nothing you don't.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
-          <div class="w-12 h-12 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Lightning Fast</h3>
-          <p class="text-gray-500 leading-relaxed">Built with modern tech, your site loads instantly on any device.</p>
-        </div>
-        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
-          <div class="w-12 h-12 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Fully Responsive</h3>
-          <p class="text-gray-500 leading-relaxed">Looks perfect on phones, tablets, and desktops. No compromises.</p>
-        </div>
-        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
-          <div class="w-12 h-12 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Always Online</h3>
-          <p class="text-gray-500 leading-relaxed">Hosted on a global CDN. Your site is always fast and available.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="py-20 md:py-28">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">About</h2>
-      <p class="text-lg text-gray-500 leading-relaxed mb-4">This website was built with SiteForge. You can edit anything you see here by chatting with the AI editor. Change colors, add sections, update text — whatever you need.</p>
-      <p class="text-lg text-gray-500 leading-relaxed">No coding required. Just describe what you want and it happens.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="bg-gray-50 py-20 md:py-28">
-    <div class="max-w-xl mx-auto px-6">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-        <p class="text-gray-500">Have a question? Reach out and we'll get back to you.</p>
-      </div>
-      <form name="contact" method="POST" data-netlify="true" class="space-y-4">
-        <input type="hidden" name="form-name" value="contact">
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
-          </div>
-        </div>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-          <textarea id="message" name="message" required rows="4" placeholder="How can we help?" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition resize-none"></textarea>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-6">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            80 år av kvalitet och engagemang
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight text-balance">
+            Vi bygger, förvaltar och hyr ut fastigheter
+          </h1>
+          <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+            Glebes Fastighets AB äger och förvaltar fastigheter från kulturhistoriska byggnader till nyproduktion i centrala Kalmarlägen. Sedan 1944.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#kontakt" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-xl hover:bg-blue-900 transition font-semibold shadow-lg shadow-primary/20 text-lg">
+              Kontakta oss
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a href="#fastighet" class="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl hover:border-primary hover:bg-gray-50 transition font-semibold text-lg">
+              Lediga lägenheter
+            </a>
+          </div>
         </div>
-        <button type="submit" class="w-full px-6 py-3.5 bg-primary text-white rounded-xl font-medium hover:bg-secondary transition shadow-lg shadow-primary/25">Send Message</button>
-      </form>
+        <div class="hidden lg:block">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-3xl transform rotate-3"></div>
+            <div class="relative bg-white rounded-3xl shadow-2xl p-8 space-y-6">
+              <div class="flex items-start gap-4 p-6 bg-blue-50 rounded-2xl">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-1">Fastighetsförvaltning</h3>
+                  <p class="text-sm text-gray-600">Professionell förvaltning av alla typer av fastigheter</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-6 bg-blue-50 rounded-2xl">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-1">Byggentreprenad</h3>
+                  <p class="text-sm text-gray-600">Totalentreprenad, generalentreprenad och utförandeentreprenad</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-6 bg-blue-50 rounded-2xl">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-1">Byggtjänster</h3>
+                  <p class="text-sm text-gray-600">Badrum, kök, tak, fasad, puts, tillbyggnad och kakel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="border-t border-gray-100 py-10">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <a href="/" class="text-lg font-bold text-primary">glebes</a>
-      <div class="flex gap-6 text-sm text-gray-400">
-        <a href="#features" class="hover:text-gray-600 transition">Features</a>
-        <a href="#about" class="hover:text-gray-600 transition">About</a>
-        <a href="#contact" class="hover:text-gray-600 transition">Contact</a>
+  <!-- 80 Years Anniversary Section -->
+  <section id="aktuellt" class="py-16 md:py-24 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-semibold mb-6">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+          </svg>
+          Aktuellt
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+          80 år av kvalitet, lokal förankring och engagemang
+        </h2>
+        <p class="text-lg sm:text-xl text-blue-100 mb-8 leading-relaxed">
+          Sedan 1944 har Glebes Fastighets AB varit en pålitlig aktör i Kalmar. Vi firar vårt 80-årsjubileum med samma värderingar som grundades från början – kvalitet, lokal förankring och genuint engagemang för våra hyresgäster och samarbetspartners.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#om-oss" class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-xl hover:bg-gray-50 transition font-semibold shadow-lg">
+            Läs mer om oss
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <p class="text-sm text-gray-400">Built with SiteForge</p>
+    </div>
+  </section>
+
+  <!-- Property Management Section -->
+  <section id="fastighet" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+          </svg>
+          Fastighet
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Fastighetsförvaltning</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Vi äger och förvaltar fastigheter från kulturhistoriska byggnader till nyproduktion i centrala Kalmarlägen. Professionell förvaltning med fokus på långsiktighet och kvalitet.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-gradient-to-br from-blue-50 to-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Kulturhistoriska fastigheter</h3>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Vi bevarar och förvaltar kulturhistoriskt värdefulla byggnader med stor omsorg och respekt för deras historia och arkitektur.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Professionell vård och underhåll</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Bevarande av historiska värden</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Centrala Kalmarlägen</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Nyproduktion</h3>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Moderna bostäder och lokaler som kombinerar hög kvalitet med hållbarhet och energieffektivitet i attraktiva lägen.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Moderna, energieffektiva byggnader</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Hållbara materialval</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Attraktiva centrumlägen</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#kontakt" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl hover:bg-blue-900 transition font-semibold shadow-lg shadow-primary/20">
+          Se lediga lägenheter
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction Services Section -->
+  <section id="bygg" class="py-20 md:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"/>
+          </svg>
+          Bygg
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Byggtjänster</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Vi erbjuder kompletta byggtjänster för renovering och ombyggnad. Professionell utförande med hög kvalitet och noggrannhet.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Badrumsrenovering</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Kompletta badrumsrenoveringar från planering till färdigt resultat. Vi hanterar allt från rör till kakel.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Köksutveckling</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Moderna köksrenoveringar med fokus på funktionalitet och design. Vi skapar ditt drömkök.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Tak & Fasad</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Professionella tak- och fasadarbeten som skyddar din fastighet och förbättrar dess utseende.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Putsarbeten</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Kvalitativa putsarbeten för både in- och utvändiga ytor. Hantverksskicklighet i varje detalj.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Tillbyggnad</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Vi hjälper dig att utöka ditt utrymme med tillbyggnader som smälter in med befintlig arkitektur.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-blue-100 text-primary rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Kakelsättning</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Professionell kakelsättning för badrum, kök och andra utrymmen. Precision och omsorg i varje läggning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contracting Section -->
+  <section id="entreprenad" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+          </svg>
+          Entreprenad
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Entreprenadformer</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Vi erbjuder flera olika entreprenadformer anpassade efter dina behov och projektets omfattning.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-gradient-to-br from-primary to-blue-900 text-white p-8 md:p-10 rounded-3xl shadow-xl">
+          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Totalentreprenad</h3>
+          <p class="text-blue-100 leading-relaxed mb-6">
+            Vi tar fullständigt ansvar för hela projektet från planering till slutbesiktning. En kontaktpunkt för hela byggprocessen.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Komplett projektstyrning</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Ansvar för projektering och bygglov</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Garanterad tid och kostnad</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-secondary to-blue-600 text-white p-8 md:p-10 rounded-3xl shadow-xl">
+          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Generalentreprenad</h3>
+          <p class="text-blue-100 leading-relaxed mb-6">
+            Du ansvarar för projekteringen medan vi koordinerar och genomför alla byggnadsarbeten med kvalitet.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Koordinering av underentreprenörer</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Ansvar för byggproduktion</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Samarbete med din projektör</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-accent to-blue-500 text-white p-8 md:p-10 rounded-3xl shadow-xl">
+          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Utförandeentreprenad</h3>
+          <p class="text-blue-100 leading-relaxed mb-6">
+            Vi utför byggarbetet enligt din färdiga projektering och tekniska beskrivningar. Rent utförande utan projektering.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Utförande enligt handlingar</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Hantverksskicklighet</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Flexibel samarbetsform</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-600 to-primary text-white p-8 md:p-10 rounded-3xl shadow-xl">
+          <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Partnering</h3>
+          <p class="text-blue-100 leading-relaxed mb-6">
+            Samarbetsform där vi arbetar tillsammans från tidigt stadium med gemensamma mål och öppen kommunikation.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Tidigt samarbete</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Gemensamma mål och risker</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Öppen ekonomi och kostnadskontroll</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="om-oss" class="py-20 md:py-32 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+          </svg>
+          Om oss
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Glebes Fastighets AB</h2>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 mb-8">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Glebes Fastighets AB grundades 1944 och har sedan dess varit en etablerad aktör inom fastighetsförvaltning och byggentreprenad i Kalmar. Med över 80 års erfarenhet kombinerar vi traditionellt hantverk med moderna metoder.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Vi äger och förvaltar fastigheter från kulturhistoriska byggnader till modern nyproduktion i centrala Kalmarlägen. Vår lokalförankring och långsiktiga perspektiv genomsyrar allt vi gör.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Våra värderingar bygger på <strong class="text-primary">kvalitet</strong>, <strong class="text-primary">lokal förankring</strong> och <strong class="text-primary">genuint engagemang</strong> för våra hyresgäster och samarbetspartners.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm p-6 text-center">
+          <div class="text-4xl font-bold text-primary mb-2">80+</div>
+          <div class="text-gray-600 font-medium">År av erfarenhet</div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-6 text-center">
+          <div class="text-4xl font-bold text-primary mb-2">1944</div>
+          <div class="text-gray-600 font-medium">Grundat</div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-6 text-center">
+          <div class="text-4xl font-bold text-primary mb-2">Kalmar</div>
+          <div class="text-gray-600 font-medium">Lokalt förankrade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="kontakt" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-semibold mb-4">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Kontakt
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Hör av dig till oss</h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Har du frågor om våra fastigheter, byggtjänster eller entreprenadformer? Kontakta oss så hjälper vi dig.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 mb-1">Besöksadress</div>
+                <div class="text-gray-600">Kom snart igen 1<br>392 31 Kalmar</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 mb-1">Telefon</div>
+                <a href="tel:0480444490" class="text-primary hover:text-blue-900 transition">0480-44 44 90</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900 mb-1">Öppettider</div>
+                <div class="text-gray-600">Mån-Fre: 08:00-17:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-3xl p-8 md:p-10 shadow-sm">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Skicka meddelande</h3>
+          <form name="contact" method="POST" data-netlify="true" class="space-y-5">
+            <input type="hidden" name="form-name" value="contact">
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Namn</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Ditt namn"
+                  class="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
+                >
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-post</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="din@epost.se"
+                  class="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Telefon</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Ditt telefonnummer"
+                class="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
+              >
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Ämne</label>
+              <select
+                id="subject"
+                name="subject"
+                required
+                class="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
+              >
+                <option value="">Välj ämne</option>
+                <option value="fastighet">Fastighet och lägenheter</option>
+                <option value="bygg">Byggtjänster</option>
+                <option value="entreprenad">Entreprenad</option>
+                <option value="annat">Övrigt</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Meddelande</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                placeholder="Hur kan vi hjälpa dig?"
+                class="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full px-8 py-4 bg-primary text-white rounded-xl font-semibold hover:bg-blue-900 transition shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+            >
+              Skicka meddelande
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <span class="text-2xl font-bold">Glebes</span>
+          </div>
+          <p class="text-gray-400 leading-relaxed mb-4">
+            Bygg, förvaltar och hyr ut fastigheter i Kalmar sedan 1944. Kvalitet, lokal förankring och engagemang i över 80 år.
+          </p>
+          <div class="text-sm text-gray-400">
+            <p>Kom snart igen 1</p>
+            <p>392 31 Kalmar</p>
+            <p class="mt-2">Tel: <a href="tel:0480444490" class="hover:text-white transition">0480-44 44 90</a></p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg mb-4">Tjänster</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#fastighet" class="hover:text-white transition">Fastighetsförvaltning</a></li>
+            <li><a href="#bygg" class="hover:text-white transition">Byggtjänster</a></li>
+            <li><a href="#entreprenad" class="hover:text-white transition">Entreprenad</a></li>
+            <li><a href="#kontakt" class="hover:text-white transition">Lediga lägenheter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg mb-4">Företaget</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#om-oss" class="hover:text-white transition">Om oss</a></li>
+            <li><a href="#aktuellt" class="hover:text-white transition">Aktuellt</a></li>
+            <li><a href="#kontakt" class="hover:text-white transition">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="text-sm text-gray-400">
+            <p>&copy; 2026 Glebes Fastighets AB. Alla rättigheter förbehållna.</p>
+          </div>
+          <div class="flex gap-6 text-sm text-gray-400">
+            <a href="#" class="hover:text-white transition">Integritetspolicy</a>
+            <a href="#" class="hover:text-white transition">Cookiepolicy</a>
+            <a href="#" class="hover:text-white transition">Hållbarhetspolicy</a>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
     menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+
+    // Smooth scroll enhancement
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Header scroll effect
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+      lastScroll = currentScroll;
+    });
   </script>
 
 </body>
